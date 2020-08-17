@@ -55,3 +55,11 @@
 // }
 
 // const sayHi: SayHi = (word) => word
+
+function reverse(x: number): number;
+function reverse(y: string): string;
+function reverse(x: number | string) {
+  return x
+}
+
+console.log(reverse('12'))
