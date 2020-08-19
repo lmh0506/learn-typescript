@@ -43,7 +43,12 @@ class Crowller {
   private scorePageSize = 10;
   constructor(){
     // 先获取学校  如果获取过了不在获取
-    this.getSchoolList()
+    let schoolListPath = path.join(__dirname, `../data/schoolList.json`)
+    if (fs.existsSync(schoolListPath)) {
+      this.getSchoolProfessionalScore()
+    } else {
+      this.getSchoolList()
+    }
   }
 
   // 获取浙江本科院校列表
@@ -148,6 +153,18 @@ class Crowller {
       console.log('----------------  error  ----------------')
       console.log(`${year}年${school.name}专业分数线接口获取失败`)
       console.log(e)
+      // 如果获取失败尝试重新获取3次
+      if(!school.retryTime) {
+        school.retryTime = 1
+        setTimeout(async () => {
+          await this.getScoreData(school, year, scoreList, page, total)
+        }, 60 * 1000)
+      } else if (school.retryTime < 3) {
+        school.retryTime++
+        setTimeout(async () => {
+          await this.getScoreData(school, year, scoreList, page, total)
+        }, 60 * 1000)
+      }
     }
   }
 
