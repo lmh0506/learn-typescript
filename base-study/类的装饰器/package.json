@@ -6,7 +6,8 @@
   "scripts": {
     "high": "ts-node ./high.ts",
     "simple": "ts-node ./simple.ts",
-    "funcDecorator": "ts-node ./funcDecorator.ts"
+    "funcDecorator": "ts-node ./funcDecorator.ts",
+    "example": "ts-node ./example.ts"
   },
   "author": "",
   "license": "ISC",
