@@ -14,7 +14,9 @@ const MouseTrack: React.FC = () => {
       console.log('remove effect', postion.x)
       document.removeEventListener('click', updateMouse)
     }
-  })
+
+    // 传递一个空数组只执行一次
+  }, [])
   console.log('before render', postion.x)
   return (
     <>
