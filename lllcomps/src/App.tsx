@@ -3,12 +3,13 @@ import Button, {ButtonSize, ButtonType} from './components/Button/button'
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
+import Icon from './components/Icon/icon'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu style={{margin: '20px'}} defaultOpenSubMenus={['3', '4']} onSelect={index => {console.log(index)}}>
+        <Menu mode="vertical" style={{margin: '20px'}} defaultOpenSubMenus={['3', '4']} onSelect={index => {console.log(index)}}>
           <MenuItem>123</MenuItem>
           <MenuItem>123</MenuItem>
           <MenuItem disable>123</MenuItem>
@@ -23,6 +24,7 @@ function App() {
             <MenuItem>333</MenuItem>
           </SubMenu>
         </Menu>
+        <Icon icon="coffee" size="10x" theme="primary"></Icon>
         <Button className="custom">Hello</Button>
         <Button disabled>Hello</Button>
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>hello</Button>

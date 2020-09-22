@@ -29,6 +29,15 @@
     .submenu-title {
       display: flex;
       align-items: center;
+      .arrow-icon{
+        margin-left: 4px;
+        transition: transform .25s ease-in-out;
+      }
+    }
+    &:hover {
+      .arrow-icon {
+        transform: rotate(180deg);
+      }
     }
     .arrow-icon {
       transition: transform .25s ease-in-out;
