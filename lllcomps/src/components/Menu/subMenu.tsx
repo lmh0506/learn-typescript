@@ -2,6 +2,8 @@ import React, {useContext, useState, FunctionComponentElement} from 'react'
 import classnames from 'classnames'
 import {MenuContext} from './menu'
 import {MenuItemProps} from './menuItem'
+import Transition from '../Transition/transition'
+// import { CSSTransition } from 'react-transition-group'
 import Icon from '../Icon/icon'
 
 export interface SubMenuProps {
@@ -35,7 +37,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     e.preventDefault()
     timer = setTimeout(() => {
       setIsOpen(toggle)
-    }, 300)
+    }, 100)
   }
 
   let clickEvent = context.mode === 'vertical' ? {
@@ -64,9 +66,15 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   
     })
     return (
-      <ul className={subMenuClasses}>
-        {childrenCompent}
-      </ul>
+      <Transition 
+        in={isOpen}
+        timeout={300}
+        classNames="zoom-in-top"
+      >
+        <ul className={subMenuClasses}>
+          {childrenCompent}
+        </ul>
+      </Transition>
     )
   }
 
